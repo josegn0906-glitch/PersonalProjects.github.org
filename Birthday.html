@@ -1,135 +1,142 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Happy 20th Birthday Ellie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday</title>
 
 <style>
-*{box-sizing:border-box}
 
-body{
-  margin:0;
-  min-height:100vh;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-family:Arial,sans-serif;
-  color:#fff;
-  text-align:center;
-  background:linear-gradient(#2b1b3d,#1d1130)
+* {
+  box-sizing: border-box;
 }
 
-#stage{
-  position:relative;
-  z-index:2
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: linear-gradient(#2b1b3d, #1d1130);
 }
 
-.cake{
-  width:230px;
-  margin:auto;
-  position:relative
+#stage {
+  position: relative;
+  z-index: 2;
 }
 
-.candles{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  position:relative;
-  z-index:3
+.cake {
+  width: 230px;
+  margin: auto;
+  position: relative;
 }
 
-.candle{
-  font-size:62px;
-  font-weight:900;
-  color:#e9b94a;
-  text-shadow:0 3px 3px #000
+.candles {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  position: relative;
+  z-index: 3;
 }
 
-.flame{
-  width:10px;
-  height:16px;
-  margin:auto;
-  background:#ffd23f;
-  border-radius:50%;
-  animation:flicker .7s infinite
+.candle {
+  font-size: 62px;
+  font-weight: 900;
+  color: #e9b94a;
+  text-shadow: 0 3px 3px #000;
 }
 
-@keyframes flicker{
-  50%{
-    transform:scaleY(1.25) rotate(4deg)
+.flame {
+  width: 10px;
+  height: 16px;
+  margin: auto;
+  background: #ffd23f;
+  border-radius: 50%;
+  animation: flicker 0.7s infinite;
+}
+
+@keyframes flicker {
+  50% {
+    transform: scaleY(1.25) rotate(4deg);
   }
 }
 
-.layer{
-  position:relative;
-  border-radius:12px;
-  box-shadow:0 7px 12px #0005
+.layer {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 7px 12px #0005;
 }
 
-.top,.base{
-  height:45px;
-  background:linear-gradient(#f6aecb,#e88cb0)
+.top,
+.base {
+  height: 45px;
+  background: linear-gradient(#f6aecb, #e88cb0);
 }
 
-.middle{
-  height:55px;
-  width:108%;
-  margin-left:-4%;
-  background:linear-gradient(#fceedD,#ead3b4)
+.middle {
+  height: 55px;
+  width: 108%;
+  margin-left: -4%;
+  background: linear-gradient(#fceedD, #ead3b4);
 }
 
-.base{
-  height:60px;
-  width:118%;
-  margin-left:-9%
+.base {
+  height: 60px;
+  width: 118%;
+  margin-left: -9%;
 }
 
-.plate{
-  height:14px;
-  width:138%;
-  margin-left:-19%;
-  background:#d8c9e8;
-  border-radius:50%
+.plate {
+  height: 14px;
+  width: 138%;
+  margin-left: -19%;
+  background: #d8c9e8;
+  border-radius: 50%;
 }
 
-.drip{
-  position:absolute;
-  bottom:-8px;
-  width:100%;
-  height:14px;
-  background:#e88cb0;
-  border-radius:50%
+.drip {
+  position: absolute;
+  bottom: -8px;
+  width: 100%;
+  height: 14px;
+  background: #e88cb0;
+  border-radius: 50%;
 }
 
-button{
-  margin-top:35px;
-  padding:14px 28px;
-  border:0;
-  border-radius:30px;
-  background:#e9b94a;
-  color:#1d1130;
-  font-size:18px;
-  font-weight:bold;
-  cursor:pointer
+button {
+  margin-top: 35px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #e9b94a;
+  color: #1d1130;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-button:hover{
-  transform:translateY(-2px)
+button:hover {
+  transform: translateY(-2px);
 }
 
-#message{
-  min-height:24px;
-  color:#8fd9c4;
-  margin:14px
+#message {
+  min-height: 24px;
+  color: #8fd9c4;
+  margin: 14px;
 }
 
-canvas{
-  position:fixed;
-  inset:0;
-  pointer-events:none
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
+
 </style>
 </head>
 
@@ -138,6 +145,8 @@ canvas{
 <canvas id="canvas"></canvas>
 
 <div id="stage">
+
+  <!-- CAKE -->
 
   <div class="cake">
 
@@ -169,7 +178,12 @@ canvas{
 
   </div>
 
-  <button id="wish">✨ Click to make a wish ✨</button>
+
+  <!-- WISH BUTTON -->
+
+  <button id="wish">
+    ✨ Click to make a wish ✨
+  </button>
 
   <div id="message">
     Make a wish and click the button!
@@ -177,157 +191,301 @@ canvas{
 
 </div>
 
+
 <script>
-const c=document.getElementById("canvas");
-const x=c.getContext("2d");
-const btn=document.getElementById("wish");
-const msg=document.getElementById("message");
 
-let W,H;
-let fire=[];
-let balloons=[];
-let letters=[];
-let particles=[];
-let started=false;
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-function resize(){
-  W=c.width=innerWidth;
-  H=c.height=innerHeight;
+const button = document.getElementById("wish");
+const message = document.getElementById("message");
+
+let W;
+let H;
+
+let fireworks = [];
+let balloons = [];
+let letters = [];
+let particles = [];
+
+let started = false;
+
+
+/* --------------------------------
+   RESIZE CANVAS
+-------------------------------- */
+
+function resize() {
+
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+
 }
 
-addEventListener("resize",resize);
+window.addEventListener("resize", resize);
+
 resize();
 
-const colors=[
+
+/* --------------------------------
+   COLORS
+-------------------------------- */
+
+const colors = [
+
   "#e9b94a",
   "#f6aecb",
   "#8fd9c4",
   "#f27b8d",
   "#b98bde",
   "#fff3d6"
+
 ];
 
-function textPoints(){
 
-  let o=document.createElement("canvas");
-  let q=o.getContext("2d");
+/* --------------------------------
+   CREATE LETTER POINTS
+-------------------------------- */
 
-  let size=Math.min(48,W/18);
-  let text="HAPPY BIRTHDAY ELLIE";
+function textPoints() {
 
-  q.font=`bold ${size}px Arial`;
+  let offscreen = document.createElement("canvas");
 
-  while(q.measureText(text).width>W*.9){
-    size--;
-    q.font=`bold ${size}px Arial`;
-  }
+  let tempCtx =
+    offscreen.getContext("2d");
 
-  o.width=W;
-  o.height=size*1.5;
 
-  q.font=`bold ${size}px Arial`;
-  q.textAlign="center";
-  q.textBaseline="middle";
-
-  q.fillText(
-    text,
-    W/2,
-    size*.75
+  let size = Math.min(
+    48,
+    W / 18
   );
 
-  let d=q.getImageData(
-    0,
-    0,
-    W,
-    o.height
-  ).data;
+  let text =
+    "HAPPY BIRTHDAY ELLIE";
 
-  let p=[];
 
-  for(let y=0;y<o.height;y+=5){
+  tempCtx.font =
+    `bold ${size}px Arial`;
 
-    for(let xx=0;xx<W;xx+=5){
 
-      if(
-        d[(y*W+xx)*4+3]>100
-      ){
-        p.push({
-          x:xx,
-          y:y
+  /* Make sure the message fits */
+  while (
+    tempCtx.measureText(text).width >
+    W * 0.9
+  ) {
+
+    size--;
+
+    tempCtx.font =
+      `bold ${size}px Arial`;
+
+  }
+
+
+  offscreen.width = W;
+
+  offscreen.height =
+    size * 1.5;
+
+
+  tempCtx.font =
+    `bold ${size}px Arial`;
+
+  tempCtx.textAlign =
+    "center";
+
+  tempCtx.textBaseline =
+    "middle";
+
+
+  tempCtx.fillText(
+
+    text,
+
+    W / 2,
+
+    size * 0.75
+
+  );
+
+
+  let pixels =
+    tempCtx.getImageData(
+
+      0,
+      0,
+      W,
+      offscreen.height
+
+    ).data;
+
+
+  let points = [];
+
+
+  /* Move message lower */
+
+  let lower =
+    Math.min(
+      150,
+      H * 0.20
+    );
+
+
+  for (
+    let y = 0;
+    y < offscreen.height;
+    y += 5
+  ) {
+
+    for (
+      let xx = 0;
+      xx < W;
+      xx += 5
+    ) {
+
+      if (
+        pixels[
+          (y * W + xx) * 4 + 3
+        ] > 100
+      ) {
+
+        points.push({
+
+          x: xx,
+
+          y: y + lower
+
         });
+
       }
 
     }
 
   }
 
-  return p;
+
+  return points;
+
 }
 
-let targets=[];
 
-function makeFireworks(){
+let targets = [];
 
-  targets=textPoints();
 
-  targets.forEach((t,i)=>{
+/* --------------------------------
+   FIREWORKS
+-------------------------------- */
 
-    setTimeout(()=>{
+function makeFireworks() {
 
-      let sx=Math.random()*W;
-      let sy=H+20;
+  targets =
+    textPoints();
 
-      let dx=t.x-sx;
-      let dy=t.y-sy;
 
-      let dist=Math.hypot(dx,dy);
-      let speed=9;
+  targets.forEach(
+    (target, index) => {
 
-      fire.push({
+      setTimeout(() => {
 
-        x:sx,
-        y:sy,
+        let startX =
+          Math.random() * W;
 
-        vx:dx/dist*speed,
-        vy:dy/dist*speed,
+        let startY =
+          H + 20;
 
-        t:t,
 
-        life:1,
+        let dx =
+          target.x - startX;
 
-        color:colors[
-          i%colors.length
-        ]
+        let dy =
+          target.y - startY;
 
-      });
 
-    },i*18);
+        let distance =
+          Math.hypot(
+            dx,
+            dy
+          );
 
-  });
+
+        let speed = 9;
+
+
+        fireworks.push({
+
+          x: startX,
+
+          y: startY,
+
+          vx:
+            dx / distance *
+            speed,
+
+          vy:
+            dy / distance *
+            speed,
+
+          target: target,
+
+          color:
+            colors[
+              index %
+              colors.length
+            ]
+
+        });
+
+      },
+
+      index * 18
+
+      );
+
+    }
+
+  );
+
 }
 
-function addBalloons(){
 
-  for(let i=0;i<16;i++){
+/* --------------------------------
+   BALLOONS
+-------------------------------- */
+
+function addBalloons() {
+
+  for (
+    let i = 0;
+    i < 16;
+    i++
+  ) {
 
     balloons.push({
 
-      x:Math.random()*W,
+      x:
+        Math.random() * W,
 
-      y:H+
-        Math.random()*250,
+      y:
+        H +
+        Math.random() * 250,
 
-      s:18+
-        Math.random()*15,
+      size:
+        18 +
+        Math.random() * 15,
 
-      v:.7+
-        Math.random()*.8,
+      speed:
+        0.7 +
+        Math.random() * 0.8,
 
-      color:colors[
-        i%colors.length
-      ],
+      color:
+        colors[
+          i % colors.length
+        ],
 
-      a:Math.random()*6.28
+      angle:
+        Math.random() *
+        Math.PI * 2
 
     });
 
@@ -335,211 +493,384 @@ function addBalloons(){
 
 }
 
-/* Fireworks start automatically */
+
+/* --------------------------------
+   START FIREWORKS AUTOMATICALLY
+-------------------------------- */
+
 makeFireworks();
 
-/* Balloons start only after clicking */
-btn.onclick=()=>{
 
-  if(started)return;
+/* --------------------------------
+   BUTTON
+-------------------------------- */
 
-  started=true;
+button.onclick = () => {
 
-  btn.textContent="🎂 Wish made!";
+  if (started)
+    return;
 
-  msg.textContent=
+
+  started = true;
+
+
+  button.textContent =
+    "🎂 Wish made!";
+
+
+  message.textContent =
     "Happy Birthday Ellie! 🎈✨";
+
 
   addBalloons();
 
 };
 
-function draw(){
 
-  x.clearRect(
+/* --------------------------------
+   DRAW EVERYTHING
+-------------------------------- */
+
+function draw() {
+
+  ctx.clearRect(
     0,
     0,
     W,
     H
   );
 
-  /* BALLOONS */
 
-  balloons.forEach(b=>{
+  /* -----------------------------
+     BALLOONS
+  ----------------------------- */
 
-    b.y-=b.v;
+  balloons.forEach(
+    balloon => {
 
-    b.a+=.02;
+      balloon.y -=
+        balloon.speed;
 
-    b.x+=Math.sin(b.a)*.35;
+      balloon.angle +=
+        0.02;
 
-    x.fillStyle=b.color;
-    x.globalAlpha=.85;
+      balloon.x +=
+        Math.sin(
+          balloon.angle
+        ) * 0.35;
 
-    x.beginPath();
 
-    x.ellipse(
-      b.x,
-      b.y,
-      b.s*.72,
-      b.s,
-      0,
-      0,
-      Math.PI*2
-    );
+      ctx.fillStyle =
+        balloon.color;
 
-    x.fill();
+      ctx.globalAlpha =
+        0.85;
 
-    x.globalAlpha=1;
 
-    x.strokeStyle="#ffffff88";
+      ctx.beginPath();
 
-    x.beginPath();
 
-    x.moveTo(
-      b.x,
-      b.y+b.s
-    );
+      ctx.ellipse(
 
-    x.lineTo(
-      b.x,
-      b.y+b.s+35
-    );
+        balloon.x,
 
-    x.stroke();
+        balloon.y,
 
-  });
+        balloon.size * 0.72,
 
-  /* FIREWORKS */
+        balloon.size,
 
-  fire.forEach((f,i)=>{
+        0,
 
-    f.x+=f.vx;
-    f.y+=f.vy;
+        0,
 
-    let d=Math.hypot(
-      f.t.x-f.x,
-      f.t.y-f.y
-    );
+        Math.PI * 2
 
-    if(d<10){
+      );
 
-      /* Leave a glowing point behind */
-      letters.push({
-        x:f.t.x,
-        y:f.t.y,
-        color:f.color,
-        life:1
-      });
 
-      /* Explosion particles */
-      for(let n=0;n<5;n++){
+      ctx.fill();
 
-        particles.push({
 
-          x:f.t.x,
-          y:f.t.y,
+      ctx.globalAlpha = 1;
 
-          vx:(Math.random()-.5)*4,
-          vy:(Math.random()-.5)*4,
 
-          life:1,
+      /* Balloon string */
 
-          color:f.color
+      ctx.strokeStyle =
+        "#ffffff88";
+
+
+      ctx.beginPath();
+
+
+      ctx.moveTo(
+
+        balloon.x,
+
+        balloon.y +
+        balloon.size
+
+      );
+
+
+      ctx.lineTo(
+
+        balloon.x,
+
+        balloon.y +
+        balloon.size +
+        35
+
+      );
+
+
+      ctx.stroke();
+
+    }
+
+  );
+
+
+  /* -----------------------------
+     FIREWORKS TRAVELING
+  ----------------------------- */
+
+  fireworks.forEach(
+    (firework, index) => {
+
+      firework.x +=
+        firework.vx;
+
+      firework.y +=
+        firework.vy;
+
+
+      let distance =
+        Math.hypot(
+
+          firework.target.x -
+            firework.x,
+
+          firework.target.y -
+            firework.y
+
+        );
+
+
+      /* Firework reaches letter */
+
+      if (distance < 10) {
+
+        /* Permanently save the letter point */
+
+        letters.push({
+
+          x:
+            firework.target.x,
+
+          y:
+            firework.target.y,
+
+          color:
+            firework.color
 
         });
 
+
+        /* Explosion */
+
+        for (
+          let n = 0;
+          n < 5;
+          n++
+        ) {
+
+          particles.push({
+
+            x:
+              firework.target.x,
+
+            y:
+              firework.target.y,
+
+            vx:
+              (Math.random() - 0.5) * 4,
+
+            vy:
+              (Math.random() - 0.5) * 4,
+
+            life: 1,
+
+            color:
+              firework.color
+
+          });
+
+        }
+
+
+        fireworks.splice(
+          index,
+          1
+        );
+
+
+        return;
+
       }
 
-      fire.splice(i,1);
 
-      return;
+      /* Draw flying firework */
+
+      ctx.fillStyle =
+        firework.color;
+
+
+      ctx.beginPath();
+
+
+      ctx.arc(
+
+        firework.x,
+
+        firework.y,
+
+        2,
+
+        0,
+
+        Math.PI * 2
+
+      );
+
+
+      ctx.fill();
+
     }
 
-    x.fillStyle=f.color;
+  );
 
-    x.beginPath();
 
-    x.arc(
-      f.x,
-      f.y,
-      2,
-      0,
-      7
-    );
+  /* -----------------------------
+     PERMANENT LETTERS
+  ----------------------------- */
 
-    x.fill();
+  letters.forEach(
+    letter => {
 
-  });
+      ctx.globalAlpha = 1;
 
-  /* COMPLETED FIREWORK LETTERS */
+      ctx.fillStyle =
+        letter.color;
 
-  letters.forEach((l,i)=>{
 
-    l.life-=.003;
+      ctx.beginPath();
 
-    x.globalAlpha=
-      Math.max(0,l.life);
 
-    x.fillStyle=l.color;
+      ctx.arc(
 
-    x.beginPath();
+        letter.x,
 
-    x.arc(
-      l.x,
-      l.y,
-      1.7,
-      0,
-      7
-    );
+        letter.y,
 
-    x.fill();
+        1.7,
 
-    if(l.life<=0){
-      letters.splice(i,1);
+        0,
+
+        Math.PI * 2
+
+      );
+
+
+      ctx.fill();
+
     }
 
-  });
+  );
 
-  x.globalAlpha=1;
 
-  /* EXPLOSION PARTICLES */
+  ctx.globalAlpha = 1;
 
-  particles.forEach((p,i)=>{
 
-    p.x+=p.vx;
-    p.y+=p.vy;
+  /* -----------------------------
+     EXPLOSION PARTICLES
+  ----------------------------- */
 
-    p.life-=.025;
+  particles.forEach(
+    (particle, index) => {
 
-    x.globalAlpha=p.life;
-    x.fillStyle=p.color;
+      particle.x +=
+        particle.vx;
 
-    x.beginPath();
+      particle.y +=
+        particle.vy;
 
-    x.arc(
-      p.x,
-      p.y,
-      2,
-      0,
-      7
-    );
 
-    x.fill();
+      particle.life -=
+        0.025;
 
-    if(p.life<=0){
-      particles.splice(i,1);
+
+      ctx.globalAlpha =
+        particle.life;
+
+      ctx.fillStyle =
+        particle.color;
+
+
+      ctx.beginPath();
+
+
+      ctx.arc(
+
+        particle.x,
+
+        particle.y,
+
+        2,
+
+        0,
+
+        Math.PI * 2
+
+      );
+
+
+      ctx.fill();
+
+
+      if (
+        particle.life <= 0
+      ) {
+
+        particles.splice(
+          index,
+          1
+        );
+
+      }
+
     }
 
-  });
+  );
 
-  x.globalAlpha=1;
 
-  requestAnimationFrame(draw);
+  ctx.globalAlpha = 1;
+
+
+  requestAnimationFrame(
+    draw
+  );
+
 }
 
+
+/* Start animation */
+
 draw();
+
 </script>
 
 </body>
 </html>
+```
